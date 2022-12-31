@@ -12,7 +12,7 @@ puts "sui"
         username: Faker::App.name,
         password: "123",
         email: Faker::Internet.email,
-        wallet: 10
+        wallet: rand(5..15)
     )
 }
 
