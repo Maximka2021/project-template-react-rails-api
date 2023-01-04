@@ -1,30 +1,32 @@
 import React from "react"
 import { useState } from "react"
+import { useHistory } from "react-router-dom"
 function Home({ userData, setUserData, setIsLoggedIn, isLoggedIn }){
-
-    const [userGames, setUserGames] = useState({})
+    const history = useHistory()
+    console.log(userData)
 
     function handleLogOut(){
-        setUserData({})
         fetch("/logout",{
             method: "DELETE"
         })
-        .then(setIsLoggedIn(false))
+        history.push('/')
     }
-    
-    if(isLoggedIn){
-        window.$games = userData.games.map((game) => {
-            return (
+
+    const gameList = userData.games.map((game) => {
+        return(
+            <div>
                 <p>{game.title}</p>
-            )
-        })
-    }
+                <img src={userData.img_url} />
+            </div>
+            
+        )
+    })
 
     return (
         <div>
             <h1>Welcome {userData.username}</h1>
+            {gameList}
             <button onClick={handleLogOut}>Log Out</button>
-            {window.$games}
         </div>
     )
 }

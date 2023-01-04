@@ -1,14 +1,20 @@
 import React, { useState } from "react"
+import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Home from "./Home";
 
 function LogIn({userData, setUserData}){
+    //LOG IN
     const [error, setError] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    //LOG IN
 
+    const history = useHistory()
     const handleUsername = e => setUsername(e.target.value)
     const handlePassword = e => setPassword(e.target.value)
+
 
     function handleLogIn(e){
         e.preventDefault()
@@ -28,6 +34,8 @@ function LogIn({userData, setUserData}){
                 setError('')
                 setUserData(data)
                 setIsLoggedIn(true)
+                history.push('/home')
+                return <Home />
             }else if(data.error){
                 setError(data.error)
             }
@@ -35,32 +43,29 @@ function LogIn({userData, setUserData}){
     }
 
     return(
-        <div className="login-holder">
-            <p className="login-text">Log In</p>
+        <div className="main-holder">
             <div className="login-container">
-                <div className={isLoggedIn ? "hide" : "show"}>
+                <div>
                     <p className="error">{error}</p>
                     <label for="username" style={{color:"#AFAFAF"}}>Username: </label>
                     <br></br>
                     <input className="username" onChange={handleUsername} value={username}/>
                     <br></br>
                     <label for="password" style={{color:"#AFAFAF"}}>Password: </label>
-                    <br></br>
                     <input className="password" type="password" onChange={handlePassword} value={password}/>
-                    <br></br>
                     <div className="button-holder">
-                        <button className="login-btn" onClick={handleLogIn}>Log In</button>
+                        <Link to="/home" className="login-btn" onClick={handleLogIn}>Log In</Link>
                     </div>
                 </div>
-                <div className={isLoggedIn ? "show" : "hide"}>
-                    <Home 
-                        userData={userData} 
-                        setUserData={setUserData} 
-                        setIsLoggedIn={setIsLoggedIn}
-                        isLoggedIn={isLoggedIn}
-                        />
-                </div>
             </div>
+
+        {/* <div className="sign-up-container">
+            <input className="newUsername" onChange={handleNewUsername} value={newUsername} />
+            <input className="newEmail" onChange={handleNewEmail} value={newEmail} />
+            <input className="newPassword" onChange={handleNewPassword} value={newPassword} />
+
+        </div> */}
+    <Link to="/home">Click</Link>
         </div>
     )
 }

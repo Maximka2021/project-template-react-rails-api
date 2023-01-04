@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-/* LOG IN PAGE */
+/* LOG IN */
 
 .hide{
     display: none;
@@ -13,34 +13,27 @@
     display: block;
 }
 
-.login-text{
-    position: absolute;
-    top: 16%;
-    left: 35%;
-    font-size: 2rem;
-    font-family: "Motiva Sans", Sans-serif;
-    color: #e9e9e9
-}
-
 .error{
     color: red;
     margin-bottom: 2%;
 }
 
-.login-holder{
-    width: 100%;
-    height: 729px;
+.main-holder{
+    width:100%;
+    height: 100vh;
     background-color: grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .login-container{
     width: 30%;
     height: 50vh;
+    position: absolute;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
     background-color: #181A21;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
@@ -90,4 +83,18 @@
     cursor: pointer;
 }
 
-/* LOG IN PAGE */
+.sign-up-inst{
+    position: absolute;
+}
+
+/* LOG IN  */
+
+/* SIGN UP */
+
+.sign-up-container{
+    width: 30%;
+    height: 55vh;
+    background-color: #181A21;
+}
+
+/* SIGN UP */

@@ -14,7 +14,7 @@ function App() {
             <LogIn userData={userData} setUserData={setUserData} />
           </Route>
 
-          <Route path="/home">
+          <Route exact  path="/home">
             <Home userData={userData} />
           </Route>
         </Switch>

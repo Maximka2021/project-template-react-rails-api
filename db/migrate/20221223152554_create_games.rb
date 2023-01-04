@@ -5,6 +5,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.string :genre
       t.integer :price
       t.string :platform
+      t.string :img_url
 
       t.timestamps
     end
